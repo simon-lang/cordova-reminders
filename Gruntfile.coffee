@@ -15,12 +15,19 @@ module.exports = (grunt) ->
         files:
           'www/css/styles.css': 'www/css/styles.styl' # 1:1 compile
 
-    coffee:
-      compile:
-        options:
-          bare: true
+    # coffee:
+    #   compile:
+    #     options:
+    #       bare: true
+    #     files:
+    #       'www/js/app.js': ['lib/*.coffee']
+
+    browserify:
+      dist:
         files:
-          'www/js/app.js': ['lib/*.coffee']
+          'www/js/app.js': ['lib/**/*.coffee']
+        options:
+          transform: ['coffeeify']
 
     jade:
       compile:
@@ -39,9 +46,12 @@ module.exports = (grunt) ->
       stylus:
         files: ['www/css/*.styl']
         tasks: ['stylus']
-      coffee:
+      # coffee:
+      #   files: ['lib/*.coffee']
+      #   tasks: ['coffee']
+      browserify:
         files: ['lib/*.coffee']
-        tasks: ['coffee']
+        tasks: ['browserify']
       jade:
         files: ['www/*.jade']
         tasks: ['jade']
@@ -60,5 +70,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-autoprefixer'
+  grunt.loadNpmTasks 'grunt-browserify'  
   
-  grunt.registerTask 'default', ['coffee', 'stylus', 'jade', 'uglify']
+  grunt.registerTask 'default', ['browserify', 'stylus', 'jade', 'uglify']

@@ -1,3 +1,6 @@
+badass = require './badass.coffee'
+badass()
+
 app =
 
   dom: $ '.app'
@@ -45,4 +48,4 @@ app =
 $ ->
   app.initialize()
   # THIS NEXT LINE purely for debug/testing
-  # app.onDeviceReady()
+  app.onDeviceReady()
