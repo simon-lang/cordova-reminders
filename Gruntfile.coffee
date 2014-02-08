@@ -30,6 +30,11 @@ module.exports = (grunt) ->
         files:
           'www/index.html': ['www/index.jade']
 
+    autoprefixer:
+      options: {}     
+      no_dest:
+        src: "www/css/styles.css"
+
     watch:
       stylus:
         files: ['www/css/*.styl']
@@ -54,5 +59,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-autoprefixer'
   
   grunt.registerTask 'default', ['coffee', 'stylus', 'jade', 'uglify']
