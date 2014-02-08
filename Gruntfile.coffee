@@ -52,9 +52,9 @@ module.exports = (grunt) ->
       browserify:
         files: ['lib/*.coffee']
         tasks: ['browserify']
-      jade:
-        files: ['www/*.jade']
-        tasks: ['jade']
+      # jade:
+      #   files: ['www/*.jade']
+      #   tasks: ['jade']
       livereload:
         options:
           livereload: true
