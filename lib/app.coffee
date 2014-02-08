@@ -1,5 +1,5 @@
-badass = require './badass.coffee'
-badass()
+# todo: Browserify is great and all, but these 3rd party libs should be included separately
+window.Backbone = require '../bower_components/backbone/backbone.js'
 
 app =
 

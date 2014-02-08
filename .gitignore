@@ -53,6 +53,7 @@ IOS/www/
 *.sublime-workspace
 
 node_modules
+bower_components
 platforms/ios/cordova/console.log
 
 # my own build products
