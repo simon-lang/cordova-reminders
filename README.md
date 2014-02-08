@@ -1,7 +1,6 @@
 # TODO:
 
 - move jade, stylus and coffee files into a src/ folder (?)
-- add autoprefixer
-- have a build task which includes uglify?
-- ability to require files client side
+- have a "build" task which includes uglify?
 - Backbone/Marionette/Something incl Routing
+- hogan (?) for partial templates, first do bootstrap input-group
