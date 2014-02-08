@@ -59,6 +59,7 @@ platforms/ios/cordova/console.log
 # my own build products
 www/index.html
 www/js/app.js
+www/js/lib.js
 www/js/app.min.js
 www/css/styles.css
 

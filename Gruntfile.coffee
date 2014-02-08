@@ -3,12 +3,19 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
+    # uglify:
+    #   options:
+    #     banner: '/*! <%= pkg.name %> <%= grunt.template.today(\'yyyy-mm-dd HH:mm:ss\') %> */\n'
+    #   build:
+    #     src: 'www/js/app.js'
+    #     dest: 'www/js/app.min.js'
+
     uglify:
       options:
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today(\'yyyy-mm-dd HH:mm:ss\') %> */\n'
-      build:
-        src: 'www/js/app.js'
-        dest: 'www/js/app.min.js'
+        mangle: false
+      my_target:
+        files:
+          'www/js/lib.js': ['vendor/js/*.js'] #, 'bower_components/backbone/backbone.js'
 
     stylus:
       compile:

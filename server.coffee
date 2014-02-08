@@ -11,4 +11,7 @@ app.use express.static __dirname + '/www'
 app.get '/', (req, res) ->
   res.render 'index'
 
-app.listen '3000'
+port = 3000
+app.listen port
+
+console.log 'Server listening on port', port

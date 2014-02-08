@@ -1,5 +1,5 @@
 # todo: Browserify is great and all, but these 3rd party libs should be included separately
-window.Backbone = require '../bower_components/backbone/backbone.js'
+# window.Backbone = require '../bower_components/backbone/backbone.js'
 
 app =
 
@@ -46,6 +46,7 @@ app =
     app.render()
   
 $ ->
+  console.log 'docready'
   app.initialize()
   # THIS NEXT LINE purely for debug/testing
   app.onDeviceReady()
