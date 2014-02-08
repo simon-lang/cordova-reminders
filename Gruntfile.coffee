@@ -62,3 +62,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-browserify'  
   
   grunt.registerTask 'default', ['browserify', 'stylus', 'jade', 'autoprefixer', 'uglify']
+  grunt.registerTask 'build', ['browserify', 'stylus', 'jade', 'autoprefixer', 'uglify']
