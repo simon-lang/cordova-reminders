@@ -15,13 +15,6 @@ module.exports = (grunt) ->
         files:
           'www/css/styles.css': 'www/css/styles.styl' # 1:1 compile
 
-    # coffee:
-    #   compile:
-    #     options:
-    #       bare: true
-    #     files:
-    #       'www/js/app.js': ['lib/*.coffee']
-
     browserify:
       dist:
         files:
@@ -46,9 +39,6 @@ module.exports = (grunt) ->
       stylus:
         files: ['www/css/*.styl']
         tasks: ['stylus']
-      # coffee:
-      #   files: ['lib/*.coffee']
-      #   tasks: ['coffee']
       browserify:
         files: ['lib/*.coffee']
         tasks: ['browserify']
@@ -64,7 +54,6 @@ module.exports = (grunt) ->
           'www/js/app.js'
         ]
   
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-jade'
