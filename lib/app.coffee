@@ -1,9 +1,12 @@
-# todo: Browserify is great and all, but these 3rd party libs should be included separately
-# window.Backbone = require '../bower_components/backbone/backbone.js'
+Router = require './router.coffee'
+Backbone.history.start {pushState: true}
+# Usage: http://backbonejs.org/#Router-route
 
-app =
+window.app =
 
   dom: $ '.app'
+
+  router: new Router
 
   components:
     header: $ '<h1>Reminders</h1>'

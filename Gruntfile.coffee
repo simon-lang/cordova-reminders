@@ -1,21 +1,24 @@
+DEBUG = process.env.NODE_ENV is 'development'
+
 module.exports = (grunt) ->
   
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
-    # uglify:
-    #   options:
-    #     banner: '/*! <%= pkg.name %> <%= grunt.template.today(\'yyyy-mm-dd HH:mm:ss\') %> */\n'
-    #   build:
-    #     src: 'www/js/app.js'
-    #     dest: 'www/js/app.min.js'
-
     uglify:
       options:
         mangle: false
-      my_target:
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today(\'yyyy-mm-dd HH:mm:ss\') %> */\n'
+      app:
+        src: 'www/js/app.js'
+        dest: 'www/js/app.min.js'
+      lib:
         files:
-          'www/js/lib.js': ['vendor/js/*.js'] #, 'bower_components/backbone/backbone.js'
+          'www/js/lib.js': [
+            'bower_components/jquery/jquery.js'
+            'bower_components/underscore/underscore.js'
+            'bower_components/backbone/backbone.js'
+          ]
 
     stylus:
       compile:
