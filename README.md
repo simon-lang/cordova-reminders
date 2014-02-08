@@ -46,3 +46,4 @@ cordova run ios
 - http://docs.phonegap.com/en/3.3.0/guide_cli_index.md.html#The%20Command-Line%20Interface
 - http://devgirl.org/2013/07/17/tutorial-implement-push-notifications-in-your-phonegap-application/
 - http://docs.phonegap.com/en/3.3.0/cordova_camera_camera.md.html#Camera
+- http://lostechies.com/derickbailey/2012/04/19/decoupling-backbone-apps-from-websockets/
