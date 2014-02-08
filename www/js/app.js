@@ -6,7 +6,7 @@ app = {
   components: {
     header: $('<h1>Reminders</h1>'),
     input: $('<input autofocus>'),
-    submit: $('<button>Submit</button>'),
+    submit: $('<button class="btn btn-primary">Submit</button>'),
     list: $('<ul>')
   },
   render: function() {
@@ -48,5 +48,6 @@ app = {
 };
 
 $(function() {
-  return app.initialize();
+  app.initialize();
+  return app.onDeviceReady();
 });

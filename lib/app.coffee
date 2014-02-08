@@ -5,7 +5,7 @@ app =
   components:
     header: $ '<h1>Reminders</h1>'
     input:  $ '<input autofocus>'
-    submit: $ '<button>Submit</button>'
+    submit: $ '<button class="btn btn-primary">Submit</button>'
     list:   $ '<ul>'
 
   render: ->
@@ -44,4 +44,4 @@ app =
 $ ->
   app.initialize()
   # THIS NEXT LINE purely for debug/testing
-  # app.onDeviceReady()
+  app.onDeviceReady()

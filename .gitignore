@@ -51,3 +51,5 @@ IOS/www/
 
 *.sublime-project
 *.sublime-workspace
+
+node_modules
