@@ -5,7 +5,7 @@ module.exports = (grunt) ->
 
     uglify:
       options:
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today(\'yyyy-mm-dd\') %> */\n'
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today(\'yyyy-mm-dd HH:mm:ss\') %> */\n'
       build:
         src: 'www/js/app.js'
         dest: 'www/js/app.min.js'
@@ -13,7 +13,7 @@ module.exports = (grunt) ->
     stylus:
       compile:
         files:
-          'www/css/styles.css': 'www/css/styles.styl' # 1:1 compile
+          'www/css/styles.css': 'lib/styles/styles.styl'
 
     browserify:
       dist:
@@ -28,7 +28,7 @@ module.exports = (grunt) ->
           data:
             debug: false
         files:
-          'www/index.html': ['www/index.jade']
+          'www/index.html': ['lib/index.jade']
 
     autoprefixer:
       options: {}     
@@ -37,7 +37,7 @@ module.exports = (grunt) ->
 
     watch:
       stylus:
-        files: ['www/css/*.styl']
+        files: ['lib/styles/*.styl']
         tasks: ['stylus']
       browserify:
         files: ['lib/*.coffee']
@@ -61,4 +61,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-autoprefixer'
   grunt.loadNpmTasks 'grunt-browserify'  
   
-  grunt.registerTask 'default', ['browserify', 'stylus', 'jade', 'uglify']
+  grunt.registerTask 'default', ['browserify', 'stylus', 'jade', 'autoprefixer', 'uglify']
