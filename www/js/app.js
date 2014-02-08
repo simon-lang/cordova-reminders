@@ -41,7 +41,7 @@ app = {
     }
     li = $('<li>');
     li.text(task);
-    this.components.list.append(li);
+    this.components.list.prepend(li);
     return this.components.input.val('').focus();
   },
   onDeviceReady: function() {
@@ -50,6 +50,5 @@ app = {
 };
 
 $(function() {
-  app.initialize();
-  return app.onDeviceReady();
+  return app.initialize();
 });

@@ -32,7 +32,7 @@ app =
     return unless task
     li = $ '<li>'
     li.text task
-    @components.list.append li
+    @components.list.prepend li
     @components.input.val('').focus()
   
   # The scope of 'this' is the event. In order to call the 'receivedEvent'
@@ -45,4 +45,4 @@ app =
 $ ->
   app.initialize()
   # THIS NEXT LINE purely for debug/testing
-  app.onDeviceReady()
+  # app.onDeviceReady()
