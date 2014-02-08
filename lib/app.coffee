@@ -4,7 +4,7 @@ app =
 
   components:
     header: $ '<h1>Reminders</h1>'
-    input:  $ '<input autofocus>'
+    input:  $ '<input class="form-control" autofocus>'
     submit: $ '<button class="btn btn-primary">Submit</button>'
     list:   $ '<ul>'
 
@@ -29,6 +29,7 @@ app =
 
   addToList: ->
     task = @components.input.val()
+    return unless task
     li = $ '<li>'
     li.text task
     @components.list.append li

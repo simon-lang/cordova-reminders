@@ -4,7 +4,7 @@ app = {
   dom: $('.app'),
   components: {
     header: $('<h1>Reminders</h1>'),
-    input: $('<input autofocus>'),
+    input: $('<input class="form-control" autofocus>'),
     submit: $('<button class="btn btn-primary">Submit</button>'),
     list: $('<ul>')
   },
@@ -36,6 +36,9 @@ app = {
   addToList: function() {
     var li, task;
     task = this.components.input.val();
+    if (!task) {
+      return;
+    }
     li = $('<li>');
     li.text(task);
     this.components.list.append(li);
