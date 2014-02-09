@@ -22,6 +22,8 @@ module.exports = (grunt) ->
 
     stylus:
       compile:
+        options:
+          compress: !DEBUG
         files:
           'www/css/styles.css': 'lib/styles/styles.styl'
 
@@ -60,7 +62,7 @@ module.exports = (grunt) ->
           livereload: true
         files: [
           'www/css/styles.css'
-          'www/index.html'
+          # 'www/index.html'
           'www/js/app.js'
         ]
   
