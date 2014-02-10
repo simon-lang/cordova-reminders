@@ -7,7 +7,7 @@ window.Reminders =
   Collections:
     ReminderList: require './collections/reminders.coffee'
   Views:
-    ReminderItem: require './views/reminder-item.coffee'
+    ReminderItem: require './views/reminderItemView.coffee'
 
 App = require './app.coffee'
 

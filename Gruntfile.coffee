@@ -55,7 +55,7 @@ module.exports = (grunt) ->
         files: ['lib/styles/*.styl']
         tasks: ['stylus']
       browserify:
-        files: ['lib/*.coffee']
+        files: ['lib/**/*.coffee']
         tasks: ['browserify']
       jade:
         files: ['lib/*.jade', 'lib/templates/*.jade']
