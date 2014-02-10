@@ -1,66 +1,51 @@
+# todo: This should actually be split into a proper model/view
 module.exports = class App
 
   constructor: ->
     @dom = $ '.app'
 
+    @components =
+      input:  @dom.find 'input.label-input'
+      timepicker: @dom.find 'input.timepicker'
+      submit: @dom.find 'button.submit'
+      list:   @dom.find 'ul.reminder-list'
+  
     @reminders = new Reminders.Collections.ReminderList
+    @reminders.on 'add', @addToList
+    @reminders.fetch()
 
     @router = new Reminders.Router
-
-  components:
-    header: $ '<h1>Reminders</h1>'
-    input:  $ '<input class="form-control" autofocus>'
-    timepicker: $ '<input type="text" class="input-small">'
-    time:   $ '<div class="input-append bootstrap-timepicker"> <span class="add-on"><i class="icon-time"></i></span> </div>'
-    submit: $ '<button class="btn btn-primary">Submit</button>'
-    list:   $ '<ul>'
-
-  render: ->
-    @dom.empty()
-    for k, component of @components
-      @dom.append component
-
-    @components.timepicker.timepicker()
-    @components.timepicker.prependTo @components.time
-    # @components.timepicker.timepicker().on 'changeTime.timepicker', ({time}) ->
-    #   console.log 'changeTime.timepicker', time
-
-    return @dom
   
-  init: =>
-    @template = _.template $('#reminder-template').html()
-
-    # Bind any events that are required on startup. Common events are:
-    # 'load', 'deviceready', 'offline', and 'online'.
     if navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
-      document.addEventListener 'deviceready', @onDeviceReady, false
+      # Common device events are: 'load', 'deviceready', 'offline', and 'online'.
+      document.addEventListener 'deviceready', @deviceReady, false
     else
-      @onDeviceReady()
+      @deviceReady()
 
+  deviceReady: =>
+    # Usage: http://backbonejs.org/#Router-route
+    Backbone.history.start {pushState: true}
+
+    # Timepicker
+    @components.timepicker.timepicker()
+
+    # Submit
     @components.submit.on 'click', @createReminder
-    @components.input.on 'keyup', (e) =>
-      if e.keyCode is 13
-        @createReminder()
+    @components.input.on 'keyup', @checkForEnter
 
-    @reminders.fetch()
-    @reminders.each @addToList
+  checkForEnter: (e) =>
+    if e.keyCode is 13
+      @createReminder()
 
   createReminder: =>
-    return unless @components.input.val()
-    r = new Reminders.Models.Reminder
+    unless @components.input.val()
+      @components.input.val('').focus()
+      return
+    @reminders.create new Reminders.Models.Reminder
       label: @components.input.val()
-      date: @components.timepicker.data().timepicker.getTime() # ugh 
-    @reminders.create r
-    @addToList r
- 
-  addToList: (r) =>
-    li = $ @template r.toJSON()
-    r.on 'destroy', -> li.remove()
-    li.find('.icon-remove').click -> r.destroy()
-    @components.list.prepend li
+      date: @components.timepicker.data().timepicker.getTime() # ugh. Am I doing this wrong, or just terrible api?
     @components.input.val('').focus()
-  
-  # The scope of 'this' is the event. In order to call the 'receivedEvent'
-  # function, we must explicity call 'app.receivedEvent(...);'
-  onDeviceReady: =>
-    @render()
+ 
+  addToList: (model) =>
+    view = new Reminders.Views.ReminderItem {model}
+    @components.list.prepend view.render()

@@ -10,7 +10,13 @@ html
     link(rel='stylesheet', type='text/css', href='css/main.css')
     title Reminders
   body
-    .app
+
+    //- Base HTML
+    include app
+
+    //- Templates
+    script(type="text/template", id="reminder-template")
+      include templates/reminder-item
 
     if DEBUG
       script(src='js/lib.js')
@@ -19,7 +25,3 @@ html
     else
       script(src='cordova.js')
       script(src='js/app.min.js')
-
-    //- Templates
-    script(type="text/template", id="reminder-template")
-      include templates/reminder-item
