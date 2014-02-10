@@ -41,6 +41,8 @@ cordova run ios
 - basic serverside and some websocket comms. Probably socksjs over socketio
 - basic persistence, probably mongodb+mongoose for convinience
 - Actually use some cordova features
+- Bootstrap 3, not 2 (will have to find upgraded timepicker)
+- Fontawesome
 
 Do this stuff: (inspired by [this](https://github.com/bertrand-caron/bootstrap-timepicker))
 ```

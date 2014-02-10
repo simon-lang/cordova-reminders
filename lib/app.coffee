@@ -11,7 +11,8 @@ window.app = module.exports =
   components:
     header: $ '<h1>Reminders</h1>'
     input:  $ '<input class="form-control" autofocus>'
-    time:   $ '<div class="input-append bootstrap-timepicker"> <input id="timepicker1" type="text" class="input-small"> <span class="add-on"><i class="icon-time"></i></span> </div>'
+    timepicker: $ '<input type="text" class="input-small">'
+    time:   $ '<div class="input-append bootstrap-timepicker"> <span class="add-on"><i class="icon-time"></i></span> </div>'
     submit: $ '<button class="btn btn-primary">Submit</button>'
     list:   $ '<ul>'
 
@@ -19,7 +20,12 @@ window.app = module.exports =
     @dom.empty()
     for k, component of @components
       @dom.append component
-    $('#timepicker1').timepicker();
+
+    @components.timepicker.timepicker()
+    @components.timepicker.prependTo @components.time
+    # @components.timepicker.timepicker().on 'changeTime.timepicker', ({time}) ->
+    #   console.log 'changeTime.timepicker', time
+
     return @dom
   
   # Application Constructor
@@ -37,10 +43,14 @@ window.app = module.exports =
         addToList()
 
   addToList: ->
+    # todo: TEMPLATE!
     task = @components.input.val()
     return unless task
-    li = $ '<li>'
+    li = $ '<li class="reminder-item">'
     li.text task
+    span = $ '<span class="reminder-item-time">'
+    span.text @components.timepicker.data().timepicker.getTime() # ugh
+    li.append span
     @components.list.prepend li
     @components.input.val('').focus()
   
