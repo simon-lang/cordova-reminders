@@ -61,7 +61,6 @@ cordova run ios
 - Bootstrap 3, not 2 (will have to find upgraded timepicker)
 - Fontawesome
 - Unit Tests
-- Combine and minify CSS for prod
 - Try Angular instead of Backbone? or Marionette at least?
 - git ignore cordova build products?
 

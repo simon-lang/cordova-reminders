@@ -5,6 +5,14 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
+    cssmin:
+      combine:
+        files:
+          'www/css/lib.css': [
+            'bower_components/bootstrap/docs/assets/css/bootstrap.css'
+            'bower_components/bootstrap-timepicker/css/bootstrap-timepicker.css'
+          ]
+
     uglify:
       options:
         mangle: false
@@ -72,9 +80,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-jade'
+  grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-autoprefixer'
   grunt.loadNpmTasks 'grunt-browserify'  
   
-  grunt.registerTask 'default', ['browserify', 'stylus', 'jade', 'autoprefixer', 'uglify']
-  grunt.registerTask 'build', ['browserify', 'stylus', 'jade', 'autoprefixer', 'uglify']
+  grunt.registerTask 'default', ['cssmin', 'browserify', 'stylus', 'jade', 'autoprefixer', 'uglify']
