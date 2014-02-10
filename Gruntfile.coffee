@@ -18,6 +18,7 @@ module.exports = (grunt) ->
             'bower_components/jquery/jquery.js'
             'bower_components/underscore/underscore.js'
             'bower_components/backbone/backbone.js'
+            'bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js'
           ]
 
     stylus:
@@ -25,7 +26,7 @@ module.exports = (grunt) ->
         options:
           compress: !DEBUG
         files:
-          'www/css/styles.css': 'lib/styles/styles.styl'
+          'www/css/main.css': 'lib/styles/main.styl'
 
     browserify:
       dist:
@@ -38,14 +39,14 @@ module.exports = (grunt) ->
       compile:
         options:
           data:
-            debug: false
+            DEBUG: DEBUG
         files:
           'www/index.html': ['lib/index.jade']
 
     autoprefixer:
       options: {}     
       no_dest:
-        src: "www/css/styles.css"
+        src: "www/css/main.css"
 
     watch:
       stylus:
@@ -54,15 +55,15 @@ module.exports = (grunt) ->
       browserify:
         files: ['lib/*.coffee']
         tasks: ['browserify']
-      # jade:
-      #   files: ['www/*.jade']
-      #   tasks: ['jade']
+      jade:
+        files: ['www/*.jade']
+        tasks: ['jade']
       livereload:
         options:
           livereload: true
         files: [
-          'www/css/styles.css'
-          # 'www/index.html'
+          'www/css/main.css'
+          'www/index.html'
           'www/js/app.js'
         ]
   

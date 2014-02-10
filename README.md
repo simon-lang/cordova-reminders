@@ -15,6 +15,7 @@ Run `grunt watch` to take `/lib/app.coffee` (and files it requires), `lib/styles
 
 You can also run `grunt autoprefixer` to prefix the css and `grunt uglify` to minify the js.
 
+
 ## Mobile testing instructions
 
 Run `cordova run ios` to launch the app in your iOS simulator. If you don't have cordova or the ios sim, make sure you've done the following:
@@ -33,13 +34,22 @@ cordova run ios
 
 ## TODO:
 
-- have a "build" task which includes uglify/autoprefixer?
+- have a separate "build" task which includes uglify/autoprefixer?
 - unit tests
 - Backbone/Marionette/Something that includes proper pushState routing
 - hogan or similar for partial templates. e.g. implement bootstrap input-group
 - basic serverside and some websocket comms. Probably socksjs over socketio
 - basic persistence, probably mongodb+mongoose for convinience
+- Actually use some cordova features
 
+Do this stuff: (inspired by [this](https://github.com/bertrand-caron/bootstrap-timepicker))
+```
+$ grunt test // run jshint and jasmine tests
+$ grunt watch // run jsHint and Jasmine tests whenever a file is changed
+$ grunt compile // minify the js and css files
+$ grunt gh-pages // push updates to gh-pages
+$ grunt bump:[patch/minor/major] // bump the version
+```
 
 ## To Read:
 
@@ -47,3 +57,5 @@ cordova run ios
 - http://devgirl.org/2013/07/17/tutorial-implement-push-notifications-in-your-phonegap-application/
 - http://docs.phonegap.com/en/3.3.0/cordova_camera_camera.md.html#Camera
 - http://lostechies.com/derickbailey/2012/04/19/decoupling-backbone-apps-from-websockets/
+
+

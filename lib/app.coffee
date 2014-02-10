@@ -2,7 +2,7 @@ Router = require './router.coffee'
 Backbone.history.start {pushState: true}
 # Usage: http://backbonejs.org/#Router-route
 
-window.app =
+window.app = module.exports =
 
   dom: $ '.app'
 
@@ -11,6 +11,7 @@ window.app =
   components:
     header: $ '<h1>Reminders</h1>'
     input:  $ '<input class="form-control" autofocus>'
+    time:   $ '<div class="input-append bootstrap-timepicker"> <input id="timepicker1" type="text" class="input-small"> <span class="add-on"><i class="icon-time"></i></span> </div>'
     submit: $ '<button class="btn btn-primary">Submit</button>'
     list:   $ '<ul>'
 
@@ -18,6 +19,8 @@ window.app =
     @dom.empty()
     for k, component of @components
       @dom.append component
+    $('#timepicker1').timepicker();
+    return @dom
   
   # Application Constructor
   initialize: ->
@@ -44,12 +47,11 @@ window.app =
   # The scope of 'this' is the event. In order to call the 'receivedEvent'
   # function, we must explicity call 'app.receivedEvent(...);'
   onDeviceReady: ->
-    # app.receivedEvent "deviceready"
     # @render()
     app.render()
   
 $ ->
   console.log 'docready'
   app.initialize()
-  # THIS NEXT LINE purely for debug/testing
+  # TODO: if DEBUG
   app.onDeviceReady()

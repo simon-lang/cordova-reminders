@@ -1,0 +1,23 @@
+* {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body {
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
+  margin: 0;
+  padding: 0;
+}
+.app ul {
+  padding-left: 0;
+}
+.app li {
+  padding: 10px;
+  font-size: 24px;
+  background: rgba(0,0,0,0.1);
+  border: solid 1px rgba(0,0,0,0.4);
+  list-style-type: none;
+  margin: 10px 0;
+}
