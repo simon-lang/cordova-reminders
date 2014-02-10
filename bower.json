@@ -11,6 +11,8 @@
   "dependencies": {
     "backbone": "git://github.com/jashkenas/backbone.git#~1.1.0",
     "jquery": "git://github.com/components/jquery.git#~2.1.0",
-    "underscore": "git://github.com/jashkenas/underscore.git#~1.5.2"
+    "underscore": "git://github.com/jashkenas/underscore.git#~1.5.2",
+    "backbone.localStorage": "~1.1.7",
+    "bootstrap-timepicker": "~0.2.6"
   }
 }
