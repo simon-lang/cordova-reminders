@@ -61,6 +61,6 @@ www/index.html
 www/js/app.js
 www/js/lib.js
 www/js/app.min.js
-www/css/styles.css
+www/css/main.css
 
 platforms/ios/www/*
