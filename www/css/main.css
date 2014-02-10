@@ -25,6 +25,12 @@ body {
 .reminder-item:hover {
   opacity: 1;
 }
-.reminder-item-time {
+.reminder-item .icon-remove {
   float: right;
+  cursor: pointer;
+}
+.reminder-item-time {
+  margin-right: 10px;
+  opacity: 0.8;
+  font-size: 80%;
 }

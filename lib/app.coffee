@@ -1,19 +1,11 @@
-_.templateSettings = interpolate: /\{\{(.+?)\}\}/g
+module.exports = class App
 
-window.Reminder = require './models/reminder.coffee'
-ReminderList = require './collections/reminders.coffee'
+  constructor: ->
+    @dom = $ '.app'
 
-Router = require './router.coffee'
-Backbone.history.start {pushState: true}
-# Usage: http://backbonejs.org/#Router-route
+    @reminders = new Reminders.Collections.ReminderList
 
-window.app = module.exports =
-
-  dom: $ '.app'
-
-  reminders: new ReminderList
-
-  router: new Router
+    @router = new Reminders.Router
 
   components:
     header: $ '<h1>Reminders</h1>'
@@ -35,7 +27,7 @@ window.app = module.exports =
 
     return @dom
   
-  init: ->
+  init: =>
     @template = _.template $('#reminder-template').html()
 
     # Bind any events that are required on startup. Common events are:
@@ -45,41 +37,30 @@ window.app = module.exports =
     else
       @onDeviceReady()
 
-    addToList = _.bind @addToList, app
-    createReminder = _.bind @createReminder, app
-    @components.submit.on 'click', createReminder
-    @components.input.on 'keyup', (e) ->
+    @components.submit.on 'click', @createReminder
+    @components.input.on 'keyup', (e) =>
       if e.keyCode is 13
-        createReminder()
+        @createReminder()
 
     @reminders.fetch()
-    @reminders.each addToList
+    @reminders.each @addToList
 
-  createReminder: ->
+  createReminder: =>
     return unless @components.input.val()
-    r = new Reminder
+    r = new Reminders.Models.Reminder
       label: @components.input.val()
       date: @components.timepicker.data().timepicker.getTime() # ugh 
     @reminders.create r
     @addToList r
  
-  addToList: (r) ->
+  addToList: (r) =>
     li = $ @template r.toJSON()
-    r.on 'destroy', ->
-      li.remove()
-    li.click =>
-      r.destroy()
+    r.on 'destroy', -> li.remove()
+    li.find('.icon-remove').click -> r.destroy()
     @components.list.prepend li
     @components.input.val('').focus()
   
   # The scope of 'this' is the event. In order to call the 'receivedEvent'
   # function, we must explicity call 'app.receivedEvent(...);'
-  onDeviceReady: ->
-    # @render()
-    app.render()
-
-    # @components.input.val 'shhhsh'
-    # app.addToList()
-  
-$ ->
-  app.init()
+  onDeviceReady: =>
+    @render()
