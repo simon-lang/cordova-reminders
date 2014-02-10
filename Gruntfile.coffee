@@ -56,14 +56,14 @@ module.exports = (grunt) ->
         files: ['lib/*.coffee']
         tasks: ['browserify']
       jade:
-        files: ['www/*.jade']
+        files: ['lib/*.jade', 'lib/templates/*.jade']
         tasks: ['jade']
       livereload:
         options:
           livereload: true
         files: [
           'www/css/main.css'
-          'www/index.html'
+          'www/index.html'  # todo: having this forces full reload on style change :(
           'www/js/app.js'
         ]
   

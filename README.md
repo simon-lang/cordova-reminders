@@ -34,15 +34,13 @@ cordova run ios
 
 ## TODO:
 
-- have a separate "build" task which includes uglify/autoprefixer?
-- unit tests
 - Backbone/Marionette/Something that includes proper pushState routing
-- hogan or similar for partial templates. e.g. implement bootstrap input-group
 - basic serverside and some websocket comms. Probably socksjs over socketio
 - basic persistence, probably mongodb+mongoose for convinience
 - Actually use some cordova features
 - Bootstrap 3, not 2 (will have to find upgraded timepicker)
 - Fontawesome
+- Unit Tests
 
 Do this stuff: (inspired by [this](https://github.com/bertrand-caron/bootstrap-timepicker))
 ```

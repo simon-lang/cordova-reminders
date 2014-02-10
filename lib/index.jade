@@ -11,9 +11,16 @@ html
     title Reminders
   body
     .app
+
     if !DEBUG
       script(src='cordova.js')
+
     script(src='js/lib.js')
     script(src='js/app.js')
+
     if DEBUG
       script(src='http://localhost:35729/livereload.js')
+
+    //- Templates
+    script(type="text/template", id="reminder-template")
+      include templates/reminder-item
