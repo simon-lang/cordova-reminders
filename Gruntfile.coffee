@@ -9,17 +9,19 @@ module.exports = (grunt) ->
       options:
         mangle: false
         banner: '/*! <%= pkg.name %> <%= grunt.template.today(\'yyyy-mm-dd HH:mm:ss\') %> */\n'
-      prod:
-        src: ['www/js/lib.js', 'www/js/app.js']
-        dest: 'www/js/app.min.js'
       lib:
         files:
           'www/js/lib.js': [
+            # 'plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js'
             'bower_components/jquery/jquery.js'
             'bower_components/underscore/underscore.js'
             'bower_components/backbone/backbone.js'
+            'bower_components/backbone.localStorage/backbone.localStorage.js'
             'bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js'
           ]
+      prod:
+        src: ['www/js/lib.js', 'www/js/app.js']
+        dest: 'www/js/app.min.js'
 
     stylus:
       compile:

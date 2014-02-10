@@ -11,6 +11,8 @@ No server side or persistence implemented yet. We'll get there.
 
 ## Development Instructions
 
+First `export NODE_ENV=development`.
+
 Run `grunt watch` to take `/lib/app.coffee` (and files it requires), `lib/styles/styles.styl` (and files it imports), and `lib/index.jade` (and files it includes) and compile them to `www/js/app.js`, `www/css/styles.css` and `www/index.html` respectively. It also runs a livereload server so these files will be automatically updated in your browser.
 
 You can also run `grunt autoprefixer` to prefix the css and `grunt uglify` to minify the js.
@@ -18,7 +20,14 @@ You can also run `grunt autoprefixer` to prefix the css and `grunt uglify` to mi
 
 ## Mobile testing instructions
 
-Run `cordova run ios` to launch the app in your iOS simulator. If you don't have cordova or the ios sim, make sure you've done the following:
+```
+export NODE_ENV=production
+grunt
+cordova emulate ios
+cordova run ios
+```
+
+This packages a version for mobile and opens in your iOS simulator. If you don't have cordova or the ios sim, make sure you've done the following:
 
 ```
 sudo npm install -g cordova
@@ -42,6 +51,8 @@ cordova run ios
 - Fontawesome
 - Unit Tests
 - Combine and minify CSS for prod
+- Try Angular instead of Backbone?
+- git ignore cordova build products?
 
 Do this stuff: (inspired by [this](https://github.com/bertrand-caron/bootstrap-timepicker))
 ```

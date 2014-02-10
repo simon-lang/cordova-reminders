@@ -1,5 +1,8 @@
 _.templateSettings = interpolate: /\{\{(.+?)\}\}/g
 
+window.Reminder = require './models/reminder.coffee'
+ReminderList = require './collections/reminders.coffee'
+
 Router = require './router.coffee'
 Backbone.history.start {pushState: true}
 # Usage: http://backbonejs.org/#Router-route
@@ -7,6 +10,8 @@ Backbone.history.start {pushState: true}
 window.app = module.exports =
 
   dom: $ '.app'
+
+  reminders: new ReminderList
 
   router: new Router
 
@@ -41,16 +46,30 @@ window.app = module.exports =
       @onDeviceReady()
 
     addToList = _.bind @addToList, app
-    @components.submit.on 'click', addToList
+    createReminder = _.bind @createReminder, app
+    @components.submit.on 'click', createReminder
     @components.input.on 'keyup', (e) ->
       if e.keyCode is 13
-        addToList()
+        createReminder()
 
-  addToList: ->
+    @reminders.fetch()
+    @reminders.each addToList
+
+  createReminder: ->
     return unless @components.input.val()
-    @components.list.prepend @template
+    r = new Reminder
       label: @components.input.val()
       date: @components.timepicker.data().timepicker.getTime() # ugh 
+    @reminders.create r
+    @addToList r
+ 
+  addToList: (r) ->
+    li = $ @template r.toJSON()
+    r.on 'destroy', ->
+      li.remove()
+    li.click =>
+      r.destroy()
+    @components.list.prepend li
     @components.input.val('').focus()
   
   # The scope of 'this' is the event. In order to call the 'receivedEvent'
