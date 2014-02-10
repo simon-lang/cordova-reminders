@@ -12,14 +12,13 @@ html
   body
     .app
 
-    if !DEBUG
-      script(src='cordova.js')
-
-    script(src='js/lib.js')
-    script(src='js/app.js')
-
     if DEBUG
+      script(src='js/lib.js')
+      script(src='js/app.js')
       script(src='http://localhost:35729/livereload.js')
+    else
+      script(src='cordova.js')
+      script(src='js/app.min.js')
 
     //- Templates
     script(type="text/template", id="reminder-template")

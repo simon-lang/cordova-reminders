@@ -41,6 +41,7 @@ cordova run ios
 - Bootstrap 3, not 2 (will have to find upgraded timepicker)
 - Fontawesome
 - Unit Tests
+- Combine and minify CSS for prod
 
 Do this stuff: (inspired by [this](https://github.com/bertrand-caron/bootstrap-timepicker))
 ```

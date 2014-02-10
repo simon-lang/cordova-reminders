@@ -9,8 +9,8 @@ module.exports = (grunt) ->
       options:
         mangle: false
         banner: '/*! <%= pkg.name %> <%= grunt.template.today(\'yyyy-mm-dd HH:mm:ss\') %> */\n'
-      app:
-        src: 'www/js/app.js'
+      prod:
+        src: ['www/js/lib.js', 'www/js/app.js']
         dest: 'www/js/app.min.js'
       lib:
         files:
