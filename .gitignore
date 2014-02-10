@@ -63,3 +63,4 @@ www/js/lib.js
 www/js/app.min.js
 www/css/styles.css
 
+platforms/ios/www/*
