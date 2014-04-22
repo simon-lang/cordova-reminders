@@ -1,14 +1,14 @@
 _.templateSettings = interpolate: /\{\{(.+?)\}\}/g
 
 window.Reminders =
-  Router: require './router.coffee'
+  Router: require './router'
   Models:
-    Reminder: require './models/reminder.coffee'
+    Reminder: require './models/reminder'
   Collections:
-    ReminderList: require './collections/reminders.coffee'
+    ReminderList: require './collections/reminders'
   Views:
-    ReminderItem: require './views/reminderItemView.coffee'
+    ReminderItem: require './views/reminderItemView'
 
-App = require './app.coffee'
+App = require './app'
 
 $ -> window.app = new App

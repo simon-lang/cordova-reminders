@@ -43,6 +43,7 @@ module.exports = (grunt) ->
         files:
           'www/js/app.js': ['lib/**/*.coffee']
         options:
+          extensions: '.coffee'
           transform: ['coffeeify']
 
     jade:
